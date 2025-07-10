@@ -31,6 +31,7 @@ ballRotationMode = "Dynamic"
 ballSpeedMode = "Slow"
 moveBall = True
 gameEnded = False
+debug = False
 
 # ---CZCIONKI---
 atari = pygame.font.Font("atari.otf", 60) # czcionka atari
@@ -213,6 +214,14 @@ while running:
         # event serwowania pilki
         if event.type == THROW_BALL:
             throwBall()
+
+        # przelaczanie debugu
+        if pressedKeys[pygame.K_d]:
+            if debug == False:
+                debug = True
+            
+            elif debug == True:
+                debug = False
 
 
     # rysowanie ekranu
@@ -633,7 +642,21 @@ while running:
         elif freePlayVisible:
             freePlayText = freesansbold.render("FREE PLAY", True, "white")
 
-            screen.blit(freePlayText, [1615, 1000])        
+            screen.blit(freePlayText, [1615, 1000])
+
+    # teksty debugu
+    if debug == True:
+        text1 = freesansbold.render("A: {}; X: {}; Y: {}".format(ballAngle, round(ballVelX, 2), round(ballVelY, 2)), True, "white")
+        text2 = freesansbold.render("BatSpeed: {}; BallSpeed: {}".format(batSpeedMode, ballSpeedMode), True, "white")
+        text3 = freesansbold.render("Mode: {}".format(mode), True, "white")
+        text4 = freesansbold.render("Rotation: {}".format(ballRotationMode), True, "white")
+        text5 = freesansbold.render("FPS: {}".format(round(pygame.time.Clock.get_fps(clock), 2)), True, "white")
+
+        screen.blit(text1, [0, 0])
+        screen.blit(text2, [0, 30])
+        screen.blit(text3, [0, 60])
+        screen.blit(text4, [0, 90])
+        screen.blit(text5, [0, 120])
 
     pygame.display.flip()
 
