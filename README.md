@@ -1,2 +1,2 @@
-# pong
-Atari Pong in Python
+# Pong
+Atari Pong from 1972 in Python
