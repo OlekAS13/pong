@@ -27,7 +27,7 @@ drawBall = True
 drawBats = False
 batSpeedMode = "Fast"
 batSpeed = 10
-ballRotationMode = "Static"
+ballRotationMode = "Dynamic"
 ballSpeedMode = "Slow"
 moveBall = True
 gameEnded = False
@@ -187,12 +187,12 @@ while running:
                     batSpeedMode = "Fast"
             
             # przelaczanie Ball Rotation Mode
-            """if pressedKeys[pygame.K_b]:
+            if pressedKeys[pygame.K_b]:
                 if ballRotationMode == "Dynamic":
                     ballRotationMode = "Static"
                 
                 elif ballRotationMode == "Static":
-                    ballRotationMode = "Dynamic" """
+                    ballRotationMode = "Dynamic"
             
             if pressedKeys[pygame.K_a]:
                 if ballSpeedMode == "Slow":
@@ -292,6 +292,181 @@ while running:
                 batSound.stop()
                 batSound.play()
 
+    # DYNAMIC
+    if ballRotationMode == "Dynamic":
+        # lewa
+        if ball.colliderect(batLeft):
+            if checkOffset(batLeft) >= 40:
+                ballAngle = 305
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+            
+            elif checkOffset(batLeft) < 40 and checkOffset(batLeft) >= 30:
+                ballAngle = 315
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+            
+            elif checkOffset(batLeft) < 30 and checkOffset(batLeft) >= 20:
+                ballAngle = 325
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+            
+            elif checkOffset(batLeft) < 20 and checkOffset(batLeft) >= 10:
+                ballAngle = 335
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+
+            elif checkOffset(batLeft) < 10 and checkOffset(batLeft) >= 0:
+                ballAngle = 345
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+
+            elif checkOffset(batLeft) < 0 and checkOffset(batLeft) >= -10:
+                ballAngle = 15
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+
+            elif checkOffset(batLeft) < -10 and checkOffset(batLeft) >= -20:
+                ballAngle = 25
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+
+            elif checkOffset(batLeft) < -20 and checkOffset(batLeft) >= -30:
+                ballAngle = 35
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+            
+            elif checkOffset(batLeft) < -30 and checkOffset(batLeft) >= -40:
+                ballAngle = 45
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+
+            elif checkOffset(batLeft) < -40:
+                ballAngle = 55
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+        
+            if gameStarted == True:
+                batSound.stop()
+                batSound.play()
+            
+        # prawa
+        if ball.colliderect(batRight):
+            if checkOffset(batRight) >= 40:
+                ballAngle = 235
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+            
+            elif checkOffset(batRight) < 40 and checkOffset(batRight) >= 30:
+                ballAngle = 225
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+            
+            elif checkOffset(batRight) < 30 and checkOffset(batRight) >= 20:
+                ballAngle = 215
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+            
+            elif checkOffset(batRight) < 20 and checkOffset(batRight) >= 10:
+                ballAngle = 205
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+
+            elif checkOffset(batRight) < 10 and checkOffset(batRight) >= 0:
+                ballAngle = 185
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+
+            elif checkOffset(batRight) < 0 and checkOffset(batRight) >= -10:
+                ballAngle = 175
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+
+            elif checkOffset(batRight) < -10 and checkOffset(batRight) >= -20:
+                ballAngle = 145
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+
+            elif checkOffset(batRight) < -20 and checkOffset(batRight) >= -30:
+                ballAngle = 135
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+            
+            elif checkOffset(batRight) < -30 and checkOffset(batRight) >= -40:
+                ballAngle = 125
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+
+            elif checkOffset(batRight) < -40:
+                ballAngle = 125
+
+                ballAngleRad = math.radians(ballAngle)
+
+                ballVelX = math.cos(ballAngleRad) * ballSpeed
+                ballVelY = -math.sin(ballAngleRad) * ballSpeed
+
+            if gameStarted == True:
+                    batSound.stop()
+                    batSound.play()
+
+
     # wypadanie pilki
     if gameStarted == True:
         # po lewej
@@ -388,8 +563,14 @@ while running:
             batLeft.centery = mousey
 
             # prawa
-            if drawBall == True:
+            if drawBall == True and ballRotationMode == "Static":
                 batRight.centery = ball.centery
+            
+            if drawBall == True and ballRotationMode == "Dynamic":
+                batRight.centery = ball.centery
+
+                if ball.centerx > 1350:
+                    batRight.centery = ball.centery + random.randint(-50, 50)
 
     # ---SCIANY I GOLE---
 
@@ -415,6 +596,8 @@ while running:
             screen.blit(settingsText, [120, 1000])
     
         elif settingsOpen == True:
+            ballRotationText = freesansbold.render("Ball rotation: {}".format(ballRotationMode), True, "white")
+            ballRotationToggleText = freesansbold.render("B to toggle", True, "white")
             modeText = freesansbold.render("Mode: {}".format(mode), True, "white")
             modeToggleText = freesansbold.render("M to toggle", True, "white")
             batSpeedText = freesansbold.render("Bat speed: {}".format(batSpeedMode), True, "white")
@@ -422,6 +605,8 @@ while running:
             ballSpeedText = freesansbold.render("Ball speed: {}".format(ballSpeedMode), True, "white")
             ballSpeedToggleText = freesansbold.render("A to toggle", True, "white")
 
+            screen.blit(ballRotationText, [85, 815])
+            screen.blit(ballRotationToggleText, [85, 845])
             screen.blit(modeText, [85, 875])
             screen.blit(modeToggleText, [85, 905])
             screen.blit(batSpeedText, [85, 935])
