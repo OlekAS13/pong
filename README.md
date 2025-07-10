@@ -8,7 +8,7 @@ Atari Pong from 1972 in Python
 * Points Counter
 
 ## About Pong
-In Pong you need to hit the ball with your bat and try to score by hitting your opponent's side. When someone scores 15 points they win and the game ends. In this version you can play with a opponent or a bot in a One-player mode. The bot plays perfectly so the only way to end the game is to loose. When you start a game the ball is served on random side after two seconds from random position. Then when someone scored the ball it's also served after two seconds from random position but on the side that lost.
+In Pong you need to hit the ball with your bat and try to score by hitting your opponent's side. When someone scores 15 points they win and the game ends. In this version you can play with a opponent or a bot in a One-player mode. The bot plays perfectly so the only way to end the game is to loose. When you start a game the ball is served on random side after two seconds from random height. Then when someone scored the ball it's also served after two seconds from random height but on the side that lost.
 
 ## Controls
 * Mouse buttons - start game
