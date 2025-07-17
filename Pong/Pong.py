@@ -32,6 +32,7 @@ ballSpeedMode = "Slow"
 moveBall = True
 gameEnded = False
 debug = False
+playSound = False
 
 # ---CZCIONKI---
 atari = pygame.font.Font("atari.otf", 60) # czcionka atari
@@ -90,10 +91,13 @@ def startGame():
 
 # serwowanie pilki
 def throwBall():
-    global ball, ballAngle, drawBall, ballVelX, ballVelY, pointsLeft, pointsRight, moveBall
+    global ball, ballAngle, drawBall, ballVelX, ballVelY, pointsLeft, pointsRight, moveBall, playSound
 
     drawBall = True
     moveBall = True
+
+    if playSound == False:
+        playSound = True
 
     ball = pygame.Rect(954, random.randint(15, 1065), 12, 12)
 
@@ -249,7 +253,7 @@ while running:
     if ball.colliderect(wallTop) or ball.colliderect(wallBottom):
             ballVelY *= -1
 
-            if gameStarted == True and gameEnded == False:
+            if gameStarted == True and gameEnded == False and playSound == True:
                 wallSound.stop()
                 wallSound.play()
 
@@ -277,7 +281,7 @@ while running:
             elif ballVelY < 0 and checkOffset(paddleLeft) < 0:
                 ballVelX *= -1
 
-            if gameStarted == True:
+            if gameStarted == True and playSound == True:
                 paddleSound.stop()
                 paddleSound.play()
             
@@ -297,7 +301,7 @@ while running:
             elif ballVelY < 0 and checkOffset(paddleRight) < 0:
                 ballVelX *= -1
 
-            if gameStarted == True:
+            if gameStarted == True and playSound == True:
                 paddleSound.stop()
                 paddleSound.play()
 
@@ -385,7 +389,7 @@ while running:
                 ballVelX = math.cos(ballAngleRad) * ballSpeed
                 ballVelY = -math.sin(ballAngleRad) * ballSpeed
         
-            if gameStarted == True:
+            if gameStarted == True and playSound == True:
                 paddleSound.stop()
                 paddleSound.play()
             
@@ -471,7 +475,7 @@ while running:
                 ballVelX = math.cos(ballAngleRad) * ballSpeed
                 ballVelY = -math.sin(ballAngleRad) * ballSpeed
 
-            if gameStarted == True:
+            if gameStarted == True and playSound == True:
                     paddleSound.stop()
                     paddleSound.play()
 
@@ -492,8 +496,9 @@ while running:
                 drawPaddles = False
                 gameEnded = True
 
-            outSound.stop()
-            outSound.play()
+            if playSound:
+                outSound.stop()
+                outSound.play()
 
             pygame.time.set_timer(THROW_BALL, 2000, loops = 1)
 
@@ -511,8 +516,9 @@ while running:
                 drawPaddles = False
                 gameEnded = True
 
-            outSound.stop()
-            outSound.play()    
+            if playSound:
+                outSound.stop()
+                outSound.play()    
 
             pygame.time.set_timer(THROW_BALL, 2000, loops = 1)
 
@@ -579,7 +585,7 @@ while running:
                 paddleRight.centery = ball.centery
 
                 if ball.centerx > 1350:
-                    paddleRight.centery = ball.centery + random.randint(-50, 50)
+                    paddleRight.centery = ball.centery + random.randint(-48, 48)
 
     # ---SCIANY I GOLE---
 
