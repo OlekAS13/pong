@@ -130,6 +130,37 @@ def checkOffset(paddle: pygame.Rect):
 
     return offset
 
+def resetGame():
+    global gameStarted, gameEnded, drawBall, drawPaddles, clickStartVisible, freePlayVisible
+    global pointsLeft, pointsRight, paddleLeft, paddleRight, ball, moveBall, playSound
+    global ballVelX, ballVelY, ballAngle, ballAngleRad, ballSpeed
+
+    gameStarted = False
+    gameEnded = False
+    drawBall = True
+    drawPaddles = False
+    clickStartVisible = True
+    freePlayVisible = False
+    pointsLeft = 0
+    pointsRight = 0
+    moveBall = True
+    playSound = False
+
+    paddleLeft = pygame.Rect(540, 515, 10, 50)
+    paddleRight = pygame.Rect(1370, 515, 10, 50)
+    ball = pygame.Rect(954, 534, 12, 12)
+
+    whichAngle = random.randint(0, 1)
+    if whichAngle == 0:
+        ballAngle = 135
+    else:
+        ballAngle = 45
+
+    ballAngleRad = math.radians(ballAngle)
+    ballVelX = math.cos(ballAngleRad) * ballSpeed
+    ballVelY = -math.sin(ballAngleRad) * ballSpeed
+
+
 """
 # dynamiczny kat pilki
 def dynamicBallRotationAngle(bat: pygame.Rect):
@@ -212,8 +243,12 @@ while running:
             freePlayVisible = not freePlayVisible
 
         # event staru gry na nacisniecie myszy
-        if event.type == pygame.MOUSEBUTTONDOWN and gameEnded == False:
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if gameEnded:
+                resetGame()
+
             startGame()
+
         
         # event serwowania pilki
         if event.type == THROW_BALL:
@@ -604,7 +639,7 @@ while running:
     # ---USTAWIENIA---
 
     # teksty ustawien
-    if gameStarted == False and gameEnded == False:
+    if gameStarted == False:
         if settingsOpen == False:
             settingsText = freesansbold.render("SETTINGS", True, "white")
         
@@ -639,7 +674,7 @@ while running:
     screen.blit(pointsRightText, [1175, 10])
 
     # tekst CLICK START / FREE PLAY
-    if gameStarted == False and gameEnded == False:
+    if gameStarted == False:
         if clickStartVisible:
             clickStartText = freesansbold.render("CLICK START", True, "white")
 
