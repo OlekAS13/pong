@@ -244,10 +244,9 @@ while running:
 
         # event staru gry na nacisniecie myszy
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if gameEnded:
+            if gameStarted == False or gameEnded:
                 resetGame()
-
-            startGame()
+                startGame()
 
         
         # event serwowania pilki
