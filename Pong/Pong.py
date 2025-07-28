@@ -35,7 +35,7 @@ debug = False
 playSound = False
 
 # ---CZCIONKI---
-atari = pygame.font.Font("atari.otf", 60) # czcionka atari
+atari = pygame.font.Font("atari.otf", 80) # czcionka atari
 freesansbold = pygame.font.Font("freesansbold.ttf", 30) # czcionka freesansbold
 
 # ---DZWIEKI---
