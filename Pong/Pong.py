@@ -183,6 +183,7 @@ def dynamicBallRotationAngle(bat: pygame.Rect):
 pygame.time.set_timer(TOGGLE_CLICKSTART, 2000) # timer dla napisu CLICK START / FREE PLAY
 
 while running:
+    dt = clock.get_time() / 1000.0 # delta time w sekundach
     pressedKeys = pygame.key.get_pressed()
 
     mousex, mousey = pygame.mouse.get_pos()
@@ -279,7 +280,7 @@ while running:
         ballSpeed = 6
         
     # ruch ball
-    ball = ball.move(ballVelX, ballVelY)
+    ball = ball.move(ballVelX * dt * 200, ballVelY * dt * 200)
 
     # odbijanie ball
 
