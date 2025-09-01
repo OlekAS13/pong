@@ -291,6 +291,13 @@ while running:
             if gameStarted == True and gameEnded == False and playSound == True:
                 wallSound.stop()
                 wallSound.play()
+            
+            # anti-clip
+            if ball.top < wallTop.bottom:
+                ball.top = wallTop.bottom
+
+            if ball.bottom > wallBottom.top:
+                ball.bottom = wallBottom.top
 
     if gameStarted == False:
         if ball.colliderect(goalLeft) or ball.colliderect(goalRight):
