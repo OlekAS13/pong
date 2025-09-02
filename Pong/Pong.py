@@ -628,6 +628,11 @@ while running:
 
                 if ball.centerx > 1350:
                     paddleRight.centery = ball.centery + random.randint(-48, 48)
+        
+        paddleLeft.top = max(paddleLeft.top, wallTop.bottom)
+        paddleLeft.bottom = min(paddleLeft.bottom, wallBottom.top)
+        paddleRight.top = max(paddleRight.top, wallTop.bottom)
+        paddleRight.bottom = min(paddleRight.bottom, wallBottom.top)
 
     # ---SCIANY I GOLE---
 
