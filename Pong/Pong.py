@@ -634,6 +634,13 @@ while running:
         paddleRight.top = max(paddleRight.top, wallTop.bottom)
         paddleRight.bottom = min(paddleRight.bottom, wallBottom.top)
 
+        if mode == "One-player":
+            if paddleLeft.top == wallTop.bottom:
+                pygame.mouse.set_pos(pygame.mouse.get_pos()[0], paddleLeft.centery)
+            
+            elif paddleLeft.bottom == wallBottom.top:
+                pygame.mouse.set_pos(pygame.mouse.get_pos()[0], paddleLeft.centery)
+
     # ---SCIANY I GOLE---
 
     # rysowanie scian i goli
